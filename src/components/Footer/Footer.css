@@ -1,0 +1,33 @@
+.footerBg{
+    background-color: #0082bc;
+}
+.white{
+    color: white !important;
+}
+.socialIcons{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.socialIcons .icon {
+    font-size: 24px; /* Adjust the size of the icons */
+    margin-right: 30px; /* Adjust the spacing between icons */
+    color: #fff; /* Adjust the color of the icons */
+}
+.contactContainer {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    color:#fff;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adjust the spacing between contact items */
+}
+
+.contactItem .icon {
+    color:#fff;
+    margin-right: 10px; /* Adjust the spacing between icon and text */
+    font-size: 20px; /* Adjust the size of the icons */
+}

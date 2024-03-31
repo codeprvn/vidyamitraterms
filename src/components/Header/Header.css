@@ -1,0 +1,74 @@
+/*************************/
+/* Styling Header */
+/*************************/
+header{
+	overflow: hidden;
+}
+
+#top-header{
+	text-align: center;
+	height: 80px;
+}
+
+/****************/
+/* Styling Logo */
+/****************/
+#logo{
+	float: left;
+	padding: none;
+	margin: none;
+	height: 80px;
+	width: 30%;
+}
+
+#logo img{
+	width: auto;
+	float: left;
+	padding: 5px 0px;
+} 
+
+/***************************/
+/* Styling Navigation Menu */
+/***************************/
+#menu{
+	float: right;
+	width: 70%;
+	height: 100%;
+	margin: none;
+}
+	
+#menu ul{
+	text-align: center;
+	float: right;
+	margin: 0;
+	
+}
+	
+#menu li{
+	display: inline-block;
+	padding: 0;
+	margin: 0px;
+    background: #0074D9;
+}
+	
+#menu li a, #menu li span{
+	display: inline-block;
+	padding: 0em 1.5em;
+	text-decoration: none;
+	font-weight: 600;
+	text-transform: uppercase;
+	line-height: 60px;
+}
+	
+#menu li a{
+	color: #FFF;
+}
+	
+#menu li:hover a, #menu li span{
+	background: #FFF;
+	color: #0074D9;
+	border-left: 1px solid #0074D9;
+	text-decoration: none;
+    margin: 0px;
+    padding: 0 1.8em
+}
