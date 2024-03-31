@@ -18,13 +18,15 @@ header{
 	padding: none;
 	margin: none;
 	height: 80px;
-	width: 30%;
+	display: flex;
+    align-items: center;
+	/* width: auto; */
 }
 
 #logo img{
 	width: auto;
 	float: left;
-	padding: 5px 0px;
+	/* padding: 5px 0px; */
 } 
 
 /***************************/
@@ -32,7 +34,7 @@ header{
 /***************************/
 #menu{
 	float: right;
-	width: 70%;
+	/* width: 70%; */
 	height: 100%;
 	margin: none;
 }
@@ -48,27 +50,51 @@ header{
 	display: inline-block;
 	padding: 0;
 	margin: 0px;
-    background: #0074D9;
+   
 }
 	
 #menu li a, #menu li span{
 	display: inline-block;
-	padding: 0em 1.5em;
+	padding: 0em 0.5em;
 	text-decoration: none;
 	font-weight: 600;
 	text-transform: uppercase;
-	line-height: 60px;
+	line-height: 80px;
 }
 	
 #menu li a{
-	color: #FFF;
+	color: #0082bc;
 }
 	
 #menu li:hover a, #menu li span{
-	background: #FFF;
-	color: #0074D9;
-	border-left: 1px solid #0074D9;
+	background: #0082bc;
+	color: #fff;
 	text-decoration: none;
     margin: 0px;
-    padding: 0 1.8em
+    padding: 0 0.5em
+}
+
+#menu li .active, #menu li span{
+	background: #0082bc;
+	color: #fff;
+	text-decoration: none;
+    margin: 0px;
+    padding: 0 0.5em
+}
+@media screen and (max-width: 480px) {
+	#logo img{
+		width: 100px;
+		float: left;
+		/* padding: 5px 0px; */
+	} 
+	#top-header {
+		height: 60px;
+	}
+	#menu li a, #menu li span{
+		line-height: 60px;
+	}
+	#logo{
+		height: 60px;
+		/* width: auto; */
+	}
 }

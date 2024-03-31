@@ -16,7 +16,7 @@ export function Footer() {
     return (
         <section className='footerBg'>
             <Container>
-                <Row className='pt-4'>
+                <Row className='pt-4 pb-3'>
                     <Col md={6}>
                         <h4 className='white'> Follow us on</h4>
                         <div className="socialIcons">
@@ -28,16 +28,16 @@ export function Footer() {
                     </Col>
                     <Col md={6}>
                         <h4 className='white'> Contact us</h4>
-                        <div className="contactContainer">
-                            <div className="contactItem">
+                        <div className="contactContainer mt-3">
+                            <div className="contactItem py-2">
                                 <FontAwesomeIcon icon={faPhone} className="icon" />
                                 <span>+1234567890</span>
                             </div>
-                            <div className="contactItem">
+                            <div className="contactItem py-2">
                                 <FontAwesomeIcon icon={faEnvelope} className="icon" />
                                 <span>example@example.com</span>
                             </div>
-                            <div className="contactItem">
+                            <div className="contactItem py-2">
                                 <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" />
                                 <span>123 Main St, City, Country</span>
                             </div>
