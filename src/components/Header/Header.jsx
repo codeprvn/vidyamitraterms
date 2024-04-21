@@ -13,12 +13,12 @@ const Header = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const [companyLogo, setCompanyLogo] = useState('')
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const fetchData = useCallback(() => {
-    fetch('https://manage.vidyamitraguide.com:8081/admin/getCompanyProfile')
+    fetch(`${apiUrl}/admin/getCompanyProfile`)
         .then((res) => res.json())
         .then((data) => {
-          console.log('http://localhost:5173/terms-and-conditions', data)
             document.title = data?.companyProfile?.companyName
         setCompanyLogo(data?.companyProfile?.logo)
         const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
@@ -37,7 +37,6 @@ useEffect(()=>{
 
   return (
     <div className="header">
-      {console.log('companyLogo',companyLogo)}
         <div className="logo-container">
           <NavLink to="#">
            <img src={companyLogo ? companyLogo :vidyaLogo} />

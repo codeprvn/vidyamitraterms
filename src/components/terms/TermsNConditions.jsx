@@ -5,9 +5,10 @@ import { Container } from 'react-bootstrap';
 const TermsNConditions = () => {
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(true);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const fetchData = useCallback(() => {
-        fetch('https://manage.vidyamitraguide.com:8081/admin/getAllPages')
+        fetch(`${apiUrl}/admin/getAllPages`)
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
