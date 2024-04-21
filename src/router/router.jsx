@@ -1,6 +1,6 @@
 import React from 'react'; 
 import {
-    createBrowserRouter, Navigate 
+  createHashRouter, Navigate 
   } from "react-router-dom";
 
   import { AboutPage } from "../components/About/About";
@@ -9,7 +9,7 @@ import {
 import App from "../App";
 import PrivacyNPolicy from '../components/terms/PrivacyNPolicy';
 
-const routers = createBrowserRouter([    
+const routers = createHashRouter([    
     {
       path: "/",
       element: <App />,
