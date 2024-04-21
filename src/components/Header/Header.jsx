@@ -1,30 +1,76 @@
 
-import React from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import vidyaLogo from "../../assets/logo.png"
 import './Header.css';
 import { NavLink } from 'react-router-dom';
+import CloseMenu  from "../../assets/x.svg";
+import  MenuIcon  from "../../assets/menu.svg";
+// import { ReactComponent as Logo } from "../assets/logo.svg";
+// import "./header.css";
 
-export function Header() {
-  return (
-    <header>
-        <div id="top-header">
-            <div id="logo">
-                <img src={vidyaLogo} className="logo react" />
-            </div>
-            <nav>
-                <div id="menu">
-                    <ul>
-                        <li><NavLink to="/">About Us</NavLink></li>
-                        <li><NavLink to="/terms-and-conditions">Privacy Policy</NavLink></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div id="header-image-menu">
+const Header = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+  const [companyLogo, setCompanyLogo] = useState('')
+
+  const fetchData = useCallback(() => {
+    fetch('https://manage.vidyamitraguide.com:8081/admin/getCompanyProfile')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('http://localhost:5173/terms-and-conditions', data)
+            document.title = data?.companyProfile?.companyName
+        setCompanyLogo(data?.companyProfile?.logo)
+        const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = data?.companyProfile?.favIcon
+        document.getElementsByTagName('head')[0].appendChild(link);
+        })
+        .catch((error) => {
+        });
+}, []);
+useEffect(()=>{
+    fetchData();},[fetchData])
     
+
+
+  return (
+    <div className="header">
+      {console.log('companyLogo',companyLogo)}
+        <div className="logo-container">
+          <NavLink to="#">
+           <img src={companyLogo ? companyLogo :vidyaLogo} />
+          </NavLink>
         </div>
-    </header>
+        {/* <div className="logo-nav"> */}
+        <ul className={click ? "nav-options active" : "nav-options"}>
+          <li className="option" onClick={closeMobileMenu}>
+            <NavLink to="/about-us">About</NavLink>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <NavLink to="/contact-us">Contact</NavLink>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <NavLink to="/terms-and-conditions">Terms & Conditions</NavLink>
+          </li>
+        </ul>
+      {/* </div> */}
+      <div className="mobile-menu" onClick={handleClick}>
+        {click ? (
+            <img src={CloseMenu} className="menu-icon" alt="close menu" />
+        ) : (
+          <img src={MenuIcon} className="menu-icon" alt="menu" />
+        )}
+      </div>
+    </div>
   );
 };
+
+export default Header;
+
 
 

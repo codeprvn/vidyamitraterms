@@ -1,29 +1,34 @@
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useState, useEffect, useCallback } from 'react';
 import parse from 'html-react-parser';
 import { Container } from 'react-bootstrap';
 
 const TermsNConditions = () => {
-    const[data, setData] = useState('');
-    const [loding, setLoding ] = useState(true)
+    const [data, setData] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = useCallback(() => {
+        fetch('https://manage.vidyamitraguide.com:8081/admin/getAllPages')
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                const termsAndConditionsPage = data.data.find(page => page.pageName === "termsAndConditions");
+                setData(termsAndConditionsPage?.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            });
+    }, []);
 
     useEffect(() => {
-        fetch('https://manage.vidyamitraguide.com:8082/student/getTermsAndConditions')
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            setLoding(false);
-            setData(data.termsAndConditions);
-            
-          });
-      }, []);
+        fetchData();
+    }, [fetchData]);
 
-  return (
-    <Container className='my-3'>
-      {loding?<div className='text-center text-secondary loading'>Loading...</div>: parse(data)}
-    </Container>
-  )
+    return (
+        <Container className='my-3'>
+            {loading ? <div className='text-center text-secondary loading'>Loading...</div> : parse(data)}
+        </Container>
+    );
 }
 
-export default TermsNConditions
+export default TermsNConditions;

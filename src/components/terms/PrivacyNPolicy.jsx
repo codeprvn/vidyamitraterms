@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Container } from 'react-bootstrap';
+import React, { useState, useEffect, useCallback } from 'react';
 import parse from 'html-react-parser';
-import './About.css';
+import { Container } from 'react-bootstrap';
 
-export function AboutPage() {
+function PrivacyNPolicy() {
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(true);
 
@@ -12,8 +11,8 @@ export function AboutPage() {
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
-                const aboutUsPage = data.data.find(page => page.pageName === "aboutUs");
-                setData(aboutUsPage?.data);
+                const privacyPolicyPage = data.data.find(page => page.pageName === "privacyPolicy");
+                setData(privacyPolicyPage?.data);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -31,3 +30,5 @@ export function AboutPage() {
         </Container>
     );
 }
+
+export default PrivacyNPolicy;
